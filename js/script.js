@@ -15,11 +15,23 @@ const saveFavCityName = (event) => {
   }
 };
 
+const renderLastFavoriteCity = (lastFavoriteCity) => {
+  const favCityShown = `<div class="border my-3">
+  <h2>${lastFavoriteCity.cityName} (8/15/2019) icon</h2>
+  <p>Temperature: 90.9 <sup>o</sup>F</p>
+  <p>Humidity: 41%</p>
+  <p>Wind Speed: 4.7 MPH</p>
+  <p>UV Index:<button type="button" class="btn btn-danger btn-sm">9.49</button></p>
+</div>`;
+
+  return favCityShown;
+};
+
 const renderFavoriteCities = (favoriteCities) => {
   const favCityTable = $("#favCityTable");
+  const mainContainer = $("#mainContainer");
 
   const constructFavCityListItem = (favoriteCity) => {
-    console.log(favoriteCity.cityName);
     const FavCityListItem = `<tr class="table-light">
       <td class="table-light">${favoriteCity.cityName}</td>
     </tr>`;
@@ -27,8 +39,13 @@ const renderFavoriteCities = (favoriteCities) => {
   };
 
   const tableItem = favoriteCities.map(constructFavCityListItem);
-  console.log(tableItem);
   favCityTable.append(tableItem);
+
+  const lastFavoriteCity = favoriteCities[favoriteCities.length - 1];
+
+  const favCityShown = renderLastFavoriteCity(lastFavoriteCity);
+  console.log(favCityShown);
+  mainContainer.prepend(favCityShown);
 };
 
 const onReady = () => {
