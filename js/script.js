@@ -16,14 +16,25 @@ const saveFavCityName = (event) => {
 };
 
 const renderFavoriteCities = (favoriteCities) => {
-  console.log(favoriteCities);
+  const favCityTable = $("#favCityTable");
+
+  const constructFavCityListItem = (favoriteCity) => {
+    console.log(favoriteCity.cityName);
+    const FavCityListItem = `<tr>
+      <td>${favoriteCity.cityName}</td>
+    </tr>`;
+    return FavCityListItem;
+  };
+
+  const tableItem = favoriteCities.map(constructFavCityListItem);
+  console.log(tableItem);
+  favCityTable.append(tableItem);
 };
 
 const onReady = () => {
   const favoriteCities = JSON.parse(localStorage.getItem("favoriteCities"));
 
   if (favoriteCities === null) {
-    console.log("hello");
     localStorage.setItem("favoriteCities", JSON.stringify({}));
   } else {
     renderFavoriteCities(favoriteCities);
