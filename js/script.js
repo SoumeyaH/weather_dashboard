@@ -20,8 +20,8 @@ const renderFavoriteCities = (favoriteCities) => {
 
   const constructFavCityListItem = (favoriteCity) => {
     console.log(favoriteCity.cityName);
-    const FavCityListItem = `<tr>
-      <td>${favoriteCity.cityName}</td>
+    const FavCityListItem = `<tr class="table-light">
+      <td class="table-light">${favoriteCity.cityName}</td>
     </tr>`;
     return FavCityListItem;
   };
