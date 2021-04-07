@@ -20,61 +20,72 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <header>
-      <h1>Weather Dashboard</h1>
-    </header>
+  
+    <div class="container">
+      <header>
+        <h1>Weather Dashboard</h1>
+      </header>
 
-    <div class="d-flex">
-      <section>
-        <div>
-          <h4>Search for a City</h4>
-
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" />
-            <button type="button" class="btn btn-primary">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-        <div>
-          <table class="table table-bordered table-light">
-            <tr>
-              <td>Austin</td>
-            </tr>
-            <tr>
-              <td>Chicago</td>
-            </tr>
-            <tr>
-              <td>New York</td>
-            </tr>
-            <tr>
-              <td>Orlando</td>
-            </tr>
-            <tr>
-              <td>San Francisco</td>
-            </tr>
-          </table>
-        </div>
-      </section>
-      <main>
-        <div>
-          <h2>Atlanta (8/15/2019) icon</h2>
-          <p>Temperature</p>
-          <p>Humidity</p>
-          <p>Wind Speed</p>
-          <p>UV Index</p>
-        </div>
-        <div>
-          <h2>5-Day Forecast</h2>
+      <div class="container">
+      <div class="row">
+        <section class="col-3">
           <div>
-            <div>card 1</div>
-            <div>card 2</div>
-            <div>card 3</div>
-            <div>card 4</div>
-            <div>card 5</div>
+            <h4>Search for a City</h4>
+  
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" />
+              <button type="button" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
           </div>
-        </div>
-      </main>
+          <div>
+            <table class="table table-bordered table-light">
+              <tr>
+                <td>Austin</td>
+              </tr>
+              <tr>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>New York</td>
+              </tr>
+              <tr>
+                <td>Orlando</td>
+              </tr>
+              <tr>
+                <td>San Francisco</td>
+              </tr>
+            </table>
+          </div>
+        </section>
+        <main class="col-9">
+          <div class="border">
+            <h2>Atlanta (8/15/2019) icon</h2>
+            <p>Temperature</p>
+            <p>Humidity</p>
+            <p>Wind Speed</p>
+            <p>UV Index</p>
+          </div>
+          <div>
+            <h2>5-Day Forecast:</h2>
+            <div class="d--flex">
+              <div class="card">
+                <div class="card-header">
+                  8/16/2019
+                </div>
+                <img src="" class="card-img-top" alt="icon goes here">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                </ul>
+            </div>
+          
+           
+          </div>
+        </main>
+      </div>
+     
     </div>
 
     <!--  -->
