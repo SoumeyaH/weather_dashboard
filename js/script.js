@@ -44,8 +44,30 @@ const renderFavoriteCities = (favoriteCities) => {
   const lastFavoriteCity = favoriteCities[favoriteCities.length - 1];
 
   const favCityShown = renderLastFavoriteCity(lastFavoriteCity);
-  console.log(favCityShown);
   mainContainer.prepend(favCityShown);
+};
+
+const fetchCityName = (url) => {
+  const functionForJSON = (responseObject) => {
+    if (responseObject.status !== 200) {
+      throw new Error("Internal Server Error");
+    }
+    console.log(responseObject);
+    return responseObject.json();
+  };
+
+  const functionForApplication = (dataFromServer) => {};
+
+  const functionForError = (errorObject) => {
+    // to do hello appears for a second in console 404 takes ages then cant be accessed
+    // console.log("hello");
+    // window.location.assign("../404.html");
+  };
+
+  fetch(url)
+    .then(functionForJSON)
+    .then(functionForApplication)
+    .catch(functionForError);
 };
 
 const onReady = () => {
@@ -56,6 +78,10 @@ const onReady = () => {
   } else {
     renderFavoriteCities(favoriteCities);
   }
+
+  fetchCityName(
+    "https://api.opweathermap.org/data/2.5/weather?q=london&appid=75a79666144d741cccab04915c11e69b"
+  );
 };
 
 $("#searchBtn").click(saveFavCityName);
