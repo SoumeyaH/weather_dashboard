@@ -52,11 +52,12 @@ const fetchCityName = (url) => {
     if (responseObject.status !== 200) {
       throw new Error("Internal Server Error");
     }
-    console.log(responseObject);
     return responseObject.json();
   };
 
-  const functionForApplication = (dataFromServer) => {};
+  const functionForApplication = (dataFromServer) => {
+    console.log(dataFromServer.name);
+  };
 
   const functionForError = (errorObject) => {
     // to do hello appears for a second in console 404 takes ages then cant be accessed
@@ -72,15 +73,24 @@ const fetchCityName = (url) => {
 
 const onReady = () => {
   const favoriteCities = JSON.parse(localStorage.getItem("favoriteCities"));
-
+  console.log(favoriteCities);
   if (favoriteCities === null) {
     localStorage.setItem("favoriteCities", JSON.stringify({}));
   } else {
     renderFavoriteCities(favoriteCities);
   }
 
+  const getFavCityName = (favoriteCity) => {
+    const favCityName = favoriteCity.cityName;
+
+    return favCityName;
+  };
+
+  const favCityName = favoriteCities.map(getFavCityName);
+  console.log(favCityName);
+
   fetchCityName(
-    "https://api.opweathermap.org/data/2.5/weather?q=london&appid=75a79666144d741cccab04915c11e69b"
+    `https://api.openweathermap.org/data/2.5/weather?q=${favCityName[0]}&appid=75a79666144d741cccab04915c11e69b`
   );
 };
 
