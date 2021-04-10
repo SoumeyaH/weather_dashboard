@@ -1,4 +1,4 @@
-const API_KEY = "60b4fb66103f9e3c6f93920a7d7f1377";
+const API_KEY = "75a79666144d741cccab04915c11e69b";
 
 const getFromLocalStorage = () => {
   const localStorageData = JSON.parse(localStorage.getItem("cities"));
