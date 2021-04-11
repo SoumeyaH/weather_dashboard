@@ -116,12 +116,13 @@ const renderCitiesFromLocalStorage = () => {
   $("#searched-cities").append(ul);
 };
 
-// FIX this function with the right class names and threshold values and then use in renderCurrentDayCard()
 const getUvIndexClass = (uvIndex) => {
-  if (uvIndex > 2) {
-    return "p-2 bg-primary text-white";
-  } else if (uvIndex < 2) {
-    return "p-2 bg-danger text-white";
+  if (uvIndex >= 0 && uvIndex <= 3) {
+    return "p-1 rounded bg-light";
+  } else if (uvIndex >= 4 && uvIndex <= 7) {
+    return "p-1 rounded bg-warning";
+  } else if (uvIndex >= 8 && uvIndex <= 10) {
+    return "p-1 rounded bg-danger";
   } else {
     return "";
   }
@@ -129,6 +130,8 @@ const getUvIndexClass = (uvIndex) => {
 
 const renderCurrentDayCard = (data) => {
   $("#current-day").empty();
+
+  const uvColor = getUvIndexClass(data.uvi);
 
   const card = `<div class="card my-2">
     <div class="card-body">
@@ -138,7 +141,7 @@ const renderCurrentDayCard = (data) => {
       <div class="py-2">Temperature: ${data.temperature}&deg; C</div>
       <div class="py-2">Humidity: ${data.humidity}%</div>
       <div class="py-2">Wind Speed: ${data.windSpeed} MPH</div>
-      <div class="py-2">UV Index: <span class="">${data.uvi}</span></div>
+      <div class="py-2">UV Index: <span class="${uvColor}">${data.uvi}</span></div>
     </div>
   </div>`;
 
@@ -146,7 +149,7 @@ const renderCurrentDayCard = (data) => {
 };
 
 const renderForecastCard = (data) => {
-  const card = `<div class="card mh-100 bg-primary text-light rounded card-block">
+  const card = `<div class="card mh-100 bg-primary text-light rounded card-block my-2">
     <h5 class="card-title p-1">${data.date}</h5>
     <img src="${data.iconURL}" />
     <h6 class="card-subtitle mb-2 text-light p-md-2">
